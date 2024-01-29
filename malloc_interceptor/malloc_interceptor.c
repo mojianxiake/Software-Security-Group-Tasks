@@ -1,9 +1,10 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <dlfcn.h>
 #include "malloc_interceptor.h"
 
 /* Function pointer to the original malloc function. */
-void (*ori_malloc)(size_t size);
+void *(*ori_malloc)(size_t size) = NULL;
 
 /* Total number of bytes allocated so far. */
 size_t bytes = 0;
